@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfSpeechOnCoreWithUWPApi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfSpeechOnCoreWithUWPApi"
+        xmlns:conv="clr-namespace:WpfSpeechOnCoreWithUWPApi.Converters"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <conv:Enum2BooleanConverter x:Key="Enum2Boolean" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock
+            Text="WPF 上での .NET Core による UWP API を用いた音声合成のサンプル"
+            FontSize="20"
+            HorizontalAlignment="Center" Margin="10,20,10,20" />
+        <StackPanel Orientation="Horizontal">
+            <TextBlock
+                Text="発声の言語選択:" FontSize="16" Margin="10,10" />
+            <ComboBox
+                Name="ComboBoxLang" FontSize="16" Padding="20,10" MinWidth="100" />
+            <TextBlock
+                Text="発声の性別:" FontSize="16" Margin="20,10,10,10" />
+            <StackPanel x:Name="RadioButtonGenderPanel" Orientation="Horizontal">
+                <RadioButton
+                    x:Name="RadioButtonMale" Content="男声" FontSize="16" VerticalAlignment="Center"
+                    Margin="10" IsChecked="{Binding SelectedGender,Mode=TwoWay,Converter={StaticResource Enum2Boolean},ConverterParameter=Male,UpdateSourceTrigger=PropertyChanged}" />
+                <RadioButton
+                    Content="女声" FontSize="16" VerticalAlignment="Center"
+                    Margin="10" IsChecked="{Binding SelectedGender,Mode=TwoWay,Converter={StaticResource Enum2Boolean},ConverterParameter=Female,UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label
+                Content="テキスト:" FontSize="16" Margin="10,20" VerticalAlignment="Center" />
+            <TextBox
+                Name="TextBoxInput" FontSize="16" Width="600" Margin="0,20,10,20" />
+        </StackPanel>
+        <Button
+            Name="ButtonDo" Content="実行" FontSize="16" Padding="20,10" Click="ButtonDo_Click" />
+        <MediaElement
+            Name="MediaElement" Height="10" Width="100"/>
+    </StackPanel>
+</Window>
