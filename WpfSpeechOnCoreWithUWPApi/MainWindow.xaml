@@ -38,7 +38,9 @@
             <Label
                 Content="テキスト:" FontSize="16" Margin="10,20" VerticalAlignment="Center" />
             <TextBox
-                Name="TextBoxInput" FontSize="16" Width="600" Margin="0,20,10,20" />
+                Name="TextBoxInput" FontSize="16" Width="650" MaxHeight="220"
+                TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto"
+                Margin="0,20,10,20" AcceptsReturn="True" />
         </StackPanel>
         <Button
             Name="ButtonDo" Content="実行" FontSize="16" Padding="20,10" Click="ButtonDo_Click" />
